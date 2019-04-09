@@ -2,6 +2,6 @@ class Add
 {
 public static void main(String args[])
 {
-system.out.println("Welcome to automation");
+System.out.println("Welcome to automation");
 }
 }
