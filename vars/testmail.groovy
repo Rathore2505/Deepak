@@ -1,6 +1,11 @@
-def call(from , to , subject)
 
-	{
-	mail bcc: '', body: 'Testing', cc: '', from: from , replyTo: '', 
-       subject: subject, to: to
-	}
+def call()
+{
+
+def readfile()
+{
+	string text = readFile 'C:\\Program Files (x86)\\Jenkins\\Text.txt'
+	print "The String "+text
+		
+}
+}
