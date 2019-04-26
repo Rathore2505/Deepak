@@ -1,16 +1,9 @@
 package Email
 
 
-
-def Email(def SentEmail)
-
-{	
-
-}
-
-def SentEmail(from , to , subject , )
+def SentEmail(from , to , subject)
 
 	{
-	mail bcc: '', body: 'Testing', cc: '', from: 'deepak.kumar@ravsoftsolutions.com', replyTo: '', 
-  subject: 'Jenkins_Testing', to: 'sudhakar.anandan@ravsoftsolutions.com'
+	mail bcc: '', body: 'Testing', cc: '', from: from , replyTo: '', 
+       subject: subject, to: to
 	}
