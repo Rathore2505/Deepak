@@ -5,7 +5,7 @@ def call(from , subject)
         for(int i =1; i<lines.size(); i++)
            {
 	     mail bcc: '', body: 'Testing', cc: '', from: from , replyTo: '', 
-             subject: subject, to: [i]
+             subject: subject, to: lines[i]
 		   //println "Mail ID : " + i
 	   }
 	}
