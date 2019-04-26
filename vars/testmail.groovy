@@ -6,6 +6,6 @@ def call(from , subject)
              {
 	       mail bcc: '', body: 'Testing', cc: '', from: from , replyTo: '', 
                subject: subject, to: lines[i]
-	       println "Mail Sent To "+i.toString()+" : "+ lines[i]
+	       println"Mail Sent To "+i.toString()+" : "+ lines[i]
 	   }	
         }
