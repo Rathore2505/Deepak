@@ -37,6 +37,11 @@ Thread.start
         // Save the state
         instance.save()
    } 
-   
+   Thread.start
+    {
+    sleep 10000
+
+        
+   } 
     
 }
