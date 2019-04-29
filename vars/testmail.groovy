@@ -32,7 +32,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         instance.save()
        
     // Send mail
-        mail bcc: '', body: 'Testing', cc: '', from: from, replyTo: '', 
+        mail bcc: '', body: 'Testing', cc: '', from: SystemAdminMailAddress, replyTo: '', 
             subject: 'Jenkins', to: receiver
        println 'Mail sent.'
    
