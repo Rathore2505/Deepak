@@ -9,8 +9,8 @@ def call(sender, receivers, subject, text)
 {
     // Variables
 def SystemAdminMailAddress = 'deepak.kumar@ravsoftsolutions.com'
-def SMTPUser = ''
-def SMTPPassword = ''
+def SMTPUser = 'deepak.kumar@ravsoftsolutions.com'
+def SMTPPassword = '@deepak2505'
 def SMTPPort = '25'
 def SMTPHost = 'mail.products.network.internal'
 
