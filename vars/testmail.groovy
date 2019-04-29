@@ -11,7 +11,7 @@ def call(sender, receivers, subject, text)
 def SystemAdminMailAddress = 'deepak.kumar@ravsoftsolutions.com'
 def SMTPUser = 'deepak.kumar@ravsoftsolutions.com'
 def SMTPPassword = '@deepak2505'
-def SMTPPort = '465'
+def SMTPPort = '25'
 def SMTPHost = 'secure200.inmotionhosting.com'
 
 // Constants
