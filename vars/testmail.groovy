@@ -3,7 +3,7 @@ import jenkins.model.*;
 import hudson.tools.*;
 import hudson.util.Secret;
 
-def sendMail()
+def call()
 {
 // Variables
 def SystemAdminMailAddress = env['deepak.kumar@ravsoftsolutions.com']
