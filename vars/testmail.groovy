@@ -19,11 +19,6 @@ def instance = Jenkins.getInstance()
 def mailServer = instance.getDescriptor("hudson.tasks.Mailer")
 def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
 def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
-
-Thread.start
-    {
-    sleep 10000
-
         //Jenkins Location
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
@@ -35,8 +30,7 @@ Thread.start
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
         // Save the state
-      
- 
+        instance.save() 
     Properties props = System.getProperties()
     props.put("mail.smtp.host", SMTPHost)
     Session session = Session.getDefaultInstance(props, null)
@@ -53,7 +47,7 @@ Thread.start
     println 'Sending mail to ' + receivers + '.'
     Transport.send(message)
     println 'Mail sent.'
-         instance.save() 
+        
    } 
     
 }
