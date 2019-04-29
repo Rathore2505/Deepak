@@ -1,3 +1,6 @@
+import javax.mail.*
+import javax.mail.internet.*
+    
 def sendMail(host, sender, receivers, subject, text) 
 {
     Properties props = System.getProperties()
