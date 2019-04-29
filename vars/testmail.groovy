@@ -48,7 +48,7 @@ Thread.start
         instance.save()
    } 
     Properties props = System.getProperties()
-    props.put("mail.smtp.host", host)
+    props.put("mail.smtp.host", SMTPHost)
     Session session = Session.getDefaultInstance(props, null)
 
     MimeMessage message = new MimeMessage(session)
