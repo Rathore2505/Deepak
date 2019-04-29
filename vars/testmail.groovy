@@ -18,7 +18,8 @@ def mailServer = instance.getDescriptor("hudson.tasks.Mailer")
 def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
 def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
 
-Thread.start {
+Thread.start
+    {
     sleep 10000
 
         //Jenkins Location
@@ -38,12 +39,15 @@ Thread.start {
         extmailServer.smtpHost=SMTPHost
         extmailServer.smtpPort=SMTPPort
         extmailServer.charset="UTF-8"
-        extmailServer.defaultSubject="\$PROJECT_NAME - Build # \$BUILD_NUMBER - \$BUILD_STATUS!"
-        extmailServer.defaultBody="\$PROJECT_NAME - Build # \$BUILD_NUMBER - \$BUILD_STATUS:\n\nCheck console output at \$BUILD_URL to view the results."
+        //extmailServer.defaultSubject="\$PROJECT_NAME - Build # \$BUILD_NUMBER - \$BUILD_STATUS!"
+        //extmailServer.defaultBody="\$PROJECT_NAME - Build # \$BUILD_NUMBER - \$BUILD_STATUS:\n\nCheck console output at \$BUILD_URL to view the results."
 
     // Save the state
-    instance.save()
+        instance.save()
+        sleep 10000
+   // Send mail
+        mail bcc: '', body: 'Testing', cc: '', from: sender, replyTo: '', 
+       subject: 'Jenkins_Testing', to: receiver
 } 
-    mail bcc: '', body: 'Testing', cc: '', from: sender, replyTo: '', 
- subject: 'Jenkins_Testing', to: receiver
+   
 }
