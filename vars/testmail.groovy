@@ -35,21 +35,16 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
  
     Properties props = System.getProperties()
     props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
+    props.put("mail.smtp.port", '465');
      Session session = Session.getDefaultInstance(props, null)
     MimeMessage message = new MimeMessage(session)
-     println "--> Step1"
     message.setFrom(new InternetAddress(sender))
-     println "--> Step2"
     receivers.split(',').each 
     {
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it))
-         println "--> Step3"
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it)) 
     }
-    println "--> Step4"
     message.setSubject(subject)
-    println "--> Step5"
     message.setText(text)
-println "--> Step6"
     println 'Sending mail to ' + receivers + '.'
     Transport.send(message)
     println 'Mail sent.'
