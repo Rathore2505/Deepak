@@ -11,7 +11,7 @@ def call(sender, receivers, subject, text)
 def SystemAdminMailAddress = 'deepak.kumar@ravsoftsolutions.com'
 def SMTPUser = 'deepak.kumar@ravsoftsolutions.com'
 def SMTPPassword = '@deepak2505'
-def SMTPPort = '587'
+def SMTPPort = '465'
 def SMTPHost = 'secure200.inmotionhosting.com'
 
 // Constants
@@ -33,26 +33,37 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         // Save the state
         instance.save() 
  
-    Properties props = System.getProperties()
-    props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
-    props.put("mail.smtp.port", '587');
-     props.put("mail.smtp.auth" , true);
-    //Session session = Session.getDefaultInstance(props,  new javax.mail.Authenticator())
-    Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator()
+    Properties props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.host", SMTPHost);
+    props.put("mail.smtp.user", SMTPUser);
+    props.put("mail.smtp.port", SMTPPort);
+    props.put("mail.smtp.password", SMTPPassword);
+
+    Session session = Session.getInstance(props, new SmtpAuthenticator(config));
+    try
     {
-     protected PasswordAuthentication getPasswordAuthentication() 
-     {
-            return new PasswordAuthentication(SMTPUser, SMTPPassword);
-     }
-    });
-    MimeMessage message = new MimeMessage(session)
-    message.setFrom(new InternetAddress(sender))
-    receivers.split(',').each 
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(sender));
+        InternetAddress[] addressTo = new InternetAddress[to.length];
+        for (int i = 0; i < receivers.length; i++)
+        {
+            addressTo[i] = new InternetAddress(receivers[i]);
+        }
+        message.setRecipients(Message.RecipientType.TO, addressTo);
+        message.setSubject(subject);
+        message.setText(text);
+         println 'Sending mail to ' + receivers + '.'
+        Transport.send(message);
+        println 'Mail sent.'
+    } 
+    catch (MessagingException e) 
     {
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it))    
+        e.printStackTrace();
+        return false;
     }
-    message.setSubject(subject)
-    message.setText(text)
+    return true;
+}
     println 'Sending mail to ' + receivers + '.'
     Transport.send(message)
     println 'Mail sent.'
