@@ -5,7 +5,7 @@ import jenkins.model.*;
 import hudson.tools.*;
 import hudson.util.Secret; 
 
-def call() 
+def call(sender, receivers, subject, text) 
 {
     // Variables
 def SystemAdminMailAddress = env['deepak.kumar@ravsoftsolutions.com']
@@ -40,7 +40,22 @@ Thread.start
    Thread.start
     {
     sleep 10000
+    Properties props = System.getProperties()
+    props.put("mail.smtp.host", SMTPHost)
+    Session session = Session.getDefaultInstance(props, null)
 
+    MimeMessage message = new MimeMessage(session)
+    message.setFrom(new InternetAddress(sender))
+    receivers.split(',').each 
+    {
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it))
+    }
+    message.setSubject(subject)
+    message.setText(text)
+
+    println 'Sending mail to ' + receivers + '.'
+    Transport.send(message)
+    println 'Mail sent.'
         
    } 
     
