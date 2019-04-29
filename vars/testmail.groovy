@@ -1,11 +1,18 @@
-def call(from , subject)
-	{
-	string Textpath = readFile 'C:\\Program Files (x86)\\Jenkins\\Text.txt'
-	String[] lines = Textpath.split('\n')
-	   for(int i = 0; i < lines.size(); i++)
-             {
-	       mail bcc: '', body: 'Testing', cc: '', from: from , replyTo: '', 
-               subject: subject, to: lines[i]
-	       println "Mail Sent To "+i.toString()+" : "+ lines[i]
-	   }	
-        }
+def sendMail(host, sender, receivers, subject, text) 
+{
+    Properties props = System.getProperties()
+    props.put("mail.smtp.host", host)
+    Session session = Session.getDefaultInstance(props, null)
+
+    MimeMessage message = new MimeMessage(session)
+    message.setFrom(new InternetAddress(sender))
+    receivers.split(',').each {
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it))
+    }
+    message.setSubject(subject)
+    message.setText(text)
+
+    println 'Sending mail to ' + receivers + '.'
+    Transport.send(message)
+    println 'Mail sent.'
+}
