@@ -3,7 +3,7 @@ import jenkins.model.*;
 import hudson.tools.*;
 import hudson.util.Secret;
 
-def call(sender , receiver)
+def call(receiver)
 {
 // Variables
 def SystemAdminMailAddress = "deepak.kumar@ravsoftsolutions.com"
@@ -47,8 +47,8 @@ Thread.start
       
         // Send mail
         mail bcc: '', body: 'Testing', cc: '', from: from, replyTo: '', 
-            subject: 'Jenkins', to: sender
-        println "Mail Sent To "+ sender +" :"
+            subject: 'Jenkins', to: receiver
+        println "Mail Sent To "+ receiver +" :"
 } 
    
 }
