@@ -45,7 +45,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sender));
-        InternetAddress[] addressTo = new InternetAddress[to.length];
+        InternetAddress[] addressTo = new InternetAddress[receivers.length];
         for (int i = 0; i < receivers.length; i++)
         {
             addressTo[i] = new InternetAddress(receivers[i]);
