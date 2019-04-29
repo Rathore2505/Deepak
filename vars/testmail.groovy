@@ -8,11 +8,11 @@ import hudson.util.Secret;
 def call(sender, receivers, subject, text) 
 {
     // Variables
-def SystemAdminMailAddress = 'deepak.kumar@ravsoftsolutions.com'
-def SMTPUser = 'deepak.kumar@ravsoftsolutions.com'
-def SMTPPassword = '@deepak2505'
-def SMTPPort = '465'
-def SMTPHost = 'secure200.inmotionhosting.com'
+def SystemAdminMailAddress = ''
+def SMTPUser = ''
+def SMTPPassword = ''
+def SMTPPort = ''
+def SMTPHost = ''
 
 // Constants
 def instance = Jenkins.getInstance()
