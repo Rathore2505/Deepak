@@ -40,7 +40,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     props.put("mail.smtp.port", SMTPPort);
     props.put("mail.smtp.password", SMTPPassword);
 
-    Session session = Session.getInstance(props, new SmtpAuthenticator(config));
+    Session session = Session.getInstance(props, null);
     try
     {
         Message message = new MimeMessage(session);
