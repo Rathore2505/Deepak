@@ -48,7 +48,7 @@ Thread.start
         // Send mail
         mail bcc: '', body: 'Testing', cc: '', from: from, replyTo: '', 
             subject: 'Jenkins', to: receiver
-        println "Mail Sent To "+ receiver +" :"
+       println 'Mail sent.'
 } 
    
 }
