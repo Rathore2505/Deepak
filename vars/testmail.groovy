@@ -45,9 +45,11 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(it))
          println "--> Step3"
     }
+    println "--> Step4"
     message.setSubject(subject)
+    println "--> Step5"
     message.setText(text)
-
+println "--> Step6"
     println 'Sending mail to ' + receivers + '.'
     Transport.send(message)
     println 'Mail sent.'
