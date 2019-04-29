@@ -37,14 +37,20 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
     props.put("mail.smtp.port", '587');
      props.put("mail.smtp.auth" , true);
-    Session session = Session.getDefaultInstance(props, null)
+    //Session session = Session.getDefaultInstance(props,  new javax.mail.Authenticator())
+    Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator()
+    {
+     protected PasswordAuthentication getPasswordAuthentication() 
+     {
+            return new PasswordAuthentication(SMTPUser, SMTPPassword);
+     }
+    });
     MimeMessage message = new MimeMessage(session)
     message.setFrom(new InternetAddress(sender))
-   // receivers.split(',').each 
-    //{
-        //message.addRecipient(Message.RecipientType.TO, new InternetAddress(it)) 
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(receivers)) 
-    //}
+    receivers.split(',').each 
+    {
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it))    
+    }
     message.setSubject(subject)
     message.setText(text)
     println 'Sending mail to ' + receivers + '.'
