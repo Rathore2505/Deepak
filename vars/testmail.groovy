@@ -17,7 +17,8 @@ def instance = Jenkins.getInstance()
 def mailServer = instance.getDescriptor("hudson.tasks.Mailer")
 def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
 def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
-
+Thread.start {
+    sleep 10000
         //Jenkins Location
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
@@ -40,7 +41,8 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
 
     // Save the state
         instance.save()
-        
+}
+       
         // Send mail
         mail bcc: '', body: 'Testing', cc: '', from: from, replyTo: '', 
             subject: 'Jenkins', to: receiver
