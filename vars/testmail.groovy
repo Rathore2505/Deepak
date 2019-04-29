@@ -35,7 +35,7 @@ Thread.start
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
         // Save the state
-        instance.save()
+      
  
     Properties props = System.getProperties()
     props.put("mail.smtp.host", SMTPHost)
@@ -53,7 +53,7 @@ Thread.start
     println 'Sending mail to ' + receivers + '.'
     Transport.send(message)
     println 'Mail sent.'
-        
+         instance.save() 
    } 
     
 }
