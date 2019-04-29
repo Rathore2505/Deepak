@@ -44,7 +44,7 @@ Thread.start
 
     // Save the state
         instance.save()
-      
+        sleep 10000
         // Send mail
         mail bcc: '', body: 'Testing', cc: '', from: from, replyTo: '', 
             subject: 'Jenkins', to: receiver
