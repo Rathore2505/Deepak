@@ -5,7 +5,7 @@ import jenkins.model.*;
 import hudson.tools.*;
 import hudson.util.Secret; 
 
-def call(host, sender, receivers, subject, text) 
+def call(sender, receivers, subject, text) 
 {
     // Variables
 def SystemAdminMailAddress = env['deepak.kumar@ravsoftsolutions.com']
