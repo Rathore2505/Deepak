@@ -41,8 +41,8 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     props.put("mail.smtp.password", SMTPPassword);
 
     Session session = Session.getInstance(props, null);
-    try
-    {
+    //try
+    //{
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sender));
         //InternetAddress addressTo = new InternetAddress[receivers];
@@ -53,13 +53,13 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
          println 'Sending mail to ' + receivers + '.'
         Transport.send(message);
         println 'Mail sent.'
-    } 
-    catch (MessagingException e) 
-    {
-        e.printStackTrace();
-        return false;
-    }
-    return true;
+   // } 
+    //catch (MessagingException e) 
+    //{
+       //e.printStackTrace();
+       // return false;
+    //}
+    //return true;
 }
    
         
