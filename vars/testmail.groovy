@@ -11,7 +11,7 @@ def call(sender, receivers, subject, text)
 def SystemAdminMailAddress = env['deepak.kumar@ravsoftsolutions.com']
 def SMTPUser = env['deepak.kumar@ravsoftsolutions.com']
 def SMTPPassword = env['@deepak2505']
-def SMTPPort = env['25']
+def SMTPPort = env['587']
 def SMTPHost = env['secure200.inmotionhosting.com']
 
 // Constants
@@ -29,21 +29,13 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         mailServer.setSmtpHost(SMTPHost)
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
-     //Extended-Email
-        extmailServer.smtpAuthUsername=SMTPUser
-        extmailServer.smtpAuthPassword=Secret.fromString(SMTPPassword)
-        extmailServer.smtpHost=SMTPHost
-        extmailServer.smtpPort=SMTPPort
-        extmailServer.charset="UTF-8"
-        extmailServer.defaultSubject="\$PROJECT_NAME - Build # \$BUILD_NUMBER - \$BUILD_STATUS!"
-        extmailServer.defaultBody="\$PROJECT_NAME - Build # \$BUILD_NUMBER - \$BUILD_STATUS:\n\nCheck console output at \$BUILD_URL to view the results."
-
+     
         // Save the state
         instance.save() 
  
     Properties props = System.getProperties()
     props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
-    props.put("mail.smtp.port", '25');
+    props.put("mail.smtp.port", '587');
     Session session = Session.getDefaultInstance(props, null)
     MimeMessage message = new MimeMessage(session)
     message.setFrom(new InternetAddress(sender))
