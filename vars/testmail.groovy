@@ -11,8 +11,8 @@ def call(sender, receivers, subject, text)
 def SystemAdminMailAddress = 'deepak.kumar@ravsoftsolutions.com'
 def SMTPUser = 'deepak.kumar@ravsoftsolutions.com'
 def SMTPPassword = '@deepak2505'
-def SMTPPort = '25'
-def SMTPHost = 'mail.products.network.internal'
+def SMTPPort = '465'
+def SMTPHost = 'secure200.inmotionhosting.com'
 
 // Constants
 def instance = Jenkins.getInstance()
@@ -47,7 +47,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         message.setFrom(new InternetAddress(sender));
         //InternetAddress addressTo = new InternetAddress[receivers];
        // addressTo[i] = new InternetAddress(addressTo);
-        message.setRecipients(Message.RecipientType.TO, receivers);
+        message.setRecipients(Message.RecipientType.receivers, receivers);
         message.setSubject(subject);
         message.setText(text);
          println 'Sending mail to ' + receivers + '.'
