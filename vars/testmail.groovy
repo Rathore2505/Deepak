@@ -40,10 +40,11 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     Session session = Session.getDefaultInstance(props, null)
     MimeMessage message = new MimeMessage(session)
     message.setFrom(new InternetAddress(sender))
-    receivers.split(',').each 
-    {
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(it)) 
-    }
+   // receivers.split(',').each 
+    //{
+        //message.addRecipient(Message.RecipientType.TO, new InternetAddress(it)) 
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(receivers)) 
+    //}
     message.setSubject(subject)
     message.setText(text)
     println 'Sending mail to ' + receivers + '.'
