@@ -11,7 +11,7 @@ def call(sender, receivers, subject, text)
 def SystemAdminMailAddress = env['deepak.kumar@ravsoftsolutions.com']
 def SMTPUser = env['deepak.kumar@ravsoftsolutions.com']
 def SMTPPassword = env['@deepak2505']
-def SMTPPort = env['995']
+def SMTPPort = env['587']
 def SMTPHost = env['secure200.inmotionhosting.com']
 
 // Constants
@@ -44,7 +44,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
  
     Properties props = System.getProperties()
     props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
-    props.put("mail.smtp.port", '995');
+    props.put("mail.smtp.port", '587');
      Session session = Session.getDefaultInstance(props, null)
     MimeMessage message = new MimeMessage(session)
     message.setFrom(new InternetAddress(sender))
