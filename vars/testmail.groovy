@@ -23,12 +23,13 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
         jenkinsLocationConfiguration.save()
-
+println "--> Step1"
         //E-mail Server
         mailServer.setSmtpAuth(SMTPUser, SMTPPassword)
         mailServer.setSmtpHost(SMTPHost)
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
+    println "--> Step2"
         // Save the state
         instance.save() 
     Properties props = System.getProperties()
