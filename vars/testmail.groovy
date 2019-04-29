@@ -23,22 +23,23 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
         jenkinsLocationConfiguration.save()
-        println "--> Step1"
+       
         //E-mail Server
         mailServer.setSmtpAuth(SMTPUser, SMTPPassword)
         mailServer.setSmtpHost(SMTPHost)
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
-        println "--> Step2"
+     
         // Save the state
         instance.save() 
-    println "--> Step3"
+ 
     Properties props = System.getProperties()
-    println "--> Step4"
-    props.put("mail.smtp.host", SMTPHost)
-    println "--> Step5"
+    //props.put("mail.smtp.port", SMTPPort);
+      println "--> Step1"
+    props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
+    println "--> Step2"
     Session session = Session.getDefaultInstance(props, null)
-    println "--> Step6"
+    println "--> Step3"
     MimeMessage message = new MimeMessage(session)
     message.setFrom(new InternetAddress(sender))
     receivers.split(',').each 
