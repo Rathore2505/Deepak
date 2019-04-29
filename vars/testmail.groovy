@@ -64,10 +64,8 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     }
     return true;
 }
-    println 'Sending mail to ' + receivers + '.'
-    Transport.send(message)
-    println 'Mail sent.'
+   
         
    
     
-}
+
