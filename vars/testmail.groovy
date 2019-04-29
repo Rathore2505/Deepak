@@ -36,10 +36,7 @@ Thread.start
         mailServer.setCharset("UTF-8")
         // Save the state
         instance.save()
-   } 
-   Thread.start
-    {
-    sleep 10000
+ 
     Properties props = System.getProperties()
     props.put("mail.smtp.host", SMTPHost)
     Session session = Session.getDefaultInstance(props, null)
