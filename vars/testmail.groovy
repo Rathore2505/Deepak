@@ -48,6 +48,6 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     Transport.send(message)
     println 'Mail sent.'
         
-   } 
+   
     
 }
