@@ -46,8 +46,9 @@ Thread.start
         instance.save()
       
         // Send mail
-        mail bcc: '', body: 'Testing', cc: '', from: sender, replyTo: '', 
-        subject: 'Jenkins_Testing', to: receiver
+        mail bcc: '', body: 'Testing', cc: '', from: from, replyTo: '', 
+            subject: 'Jenkins', to: sender
+        println "Mail Sent To "+ sender +"
 } 
    
 }
