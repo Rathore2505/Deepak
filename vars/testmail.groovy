@@ -28,7 +28,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         mailServer.setSmtpAuth(SMTPUser, SMTPPassword)
         mailServer.setSmtpHost(SMTPHost)
         mailServer.setSmtpPort(SMTPPort)
-        mailServer.setUseSsl()
+        //mailServer.setUseSsl()
         mailServer.setCharset("UTF-8")
      //Extended-Email
         extmailServer.smtpAuthUsername=SMTPUser
