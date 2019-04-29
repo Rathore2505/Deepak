@@ -12,7 +12,7 @@ def SystemAdminMailAddress = env['deepak.kumar@ravsoftsolutions.com']
 def SMTPUser = env['deepak.kumar@ravsoftsolutions.com']
 def SMTPPassword = env['@deepak2505']
 def SMTPPort = env['995']
-def SMTPHost = env['secure200.inmotionhosting.com']
+def SMTPHost = env['198.46.81.32']
 
 // Constants
 def instance = Jenkins.getInstance()
@@ -34,7 +34,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         instance.save() 
  
     Properties props = System.getProperties()
-    props.put("mail.smtp.host", 'secure200.inmotionhosting.com')
+    props.put("mail.smtp.host", '198.46.81.32')
     props.put("mail.smtp.port", '995');
      Session session = Session.getDefaultInstance(props, null)
     MimeMessage message = new MimeMessage(session)
