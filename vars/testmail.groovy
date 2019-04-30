@@ -8,7 +8,7 @@ import hudson.util.Secret;
 def call(receivers, subject, text) 
 {
     // Variables
-def SystemAdminMailAddress = 'admin@merge.com'
+def SystemAdminMailAddress = 'sudhakar.anandan@ravsoftsolutions.com'
 def SMTPPort = '25'
 def SMTPHost = 'mail.products.network.internal'
 
