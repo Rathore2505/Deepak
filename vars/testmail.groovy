@@ -9,7 +9,7 @@ def call(receivers, subject, text)
 {
     // Variables
 def SystemAdminMailAddress = 'admin@merge.com'
-def SMTPPort = '587'
+def SMTPPort = '465'
 def SMTPHost = 'mail.products.network.internal'
 
 // Constants
