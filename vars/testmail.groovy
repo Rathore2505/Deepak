@@ -8,11 +8,11 @@ import hudson.util.Secret;
 def call(sender, receivers, subject, text) 
 {
     // Variables
-def SystemAdminMailAddress = ''
-def SMTPUser = ''
-def SMTPPassword = ''
-def SMTPPort = ''
-def SMTPHost = ''
+def SystemAdminMailAddress = 'admin@merge.com'
+//def SMTPUser = ''
+//def SMTPPassword = ''
+def SMTPPort = '465'
+def SMTPHost = 'secure200.inmotionhosting.com'
 
 // Constants
 def instance = Jenkins.getInstance()
@@ -25,7 +25,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         jenkinsLocationConfiguration.save()
        
         //E-mail Server
-        mailServer.setSmtpAuth(SMTPUser, SMTPPassword)
+        //mailServer.setSmtpAuth(SMTPUser, SMTPPassword)
         mailServer.setSmtpHost(SMTPHost)
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
