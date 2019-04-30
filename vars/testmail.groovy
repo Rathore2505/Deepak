@@ -48,10 +48,6 @@ def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
         message.setText(text);
         println 'Sending mail to ' + receivers + '.'
         Transport.send(message);
-        println 'Message Test is ' + message + '.'
-        println 'Subject Test is ' + subject + '.'
-        println 'Test is ' + text + '.'
-        println 'Subject Test is ' + session + '.'
         println 'Mail sent.'
    
 }
