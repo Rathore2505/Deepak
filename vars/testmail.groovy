@@ -9,8 +9,6 @@ def call(receivers, subject, text)
 {
     // Variables
 def SystemAdminMailAddress = 'admin@merge.com'
-//def SMTPUser = ''
-//def SMTPPassword = ''
 def SMTPPort = '25'
 def SMTPHost = 'mail.products.network.internal'
 
@@ -23,13 +21,10 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
         jenkinsLocationConfiguration.save()
-       
         //E-mail Server
-        //mailServer.setSmtpAuth(SMTPUser, SMTPPassword)
         mailServer.setSmtpHost(SMTPHost)
         mailServer.setSmtpPort(SMTPPort)
         mailServer.setCharset("UTF-8")
-     
         // Save the state
         instance.save() 
  
@@ -41,8 +36,7 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
     //props.put("mail.smtp.password", SMTPPassword);
 
     Session session = Session.getInstance(props, null);
-    //try
-    //{
+   
         Message message = new MimeMessage(session);
         //message.setFrom(new InternetAddress(sender));
         //InternetAddress addressTo = new InternetAddress[receivers];
@@ -50,16 +44,10 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         message.setRecipients(Message.RecipientType.TO, receivers);
         message.setSubject(subject);
         message.setText(text);
-         println 'Sending mail to ' + receivers + '.'
+        println 'Sending mail to ' + receivers + '.'
         Transport.send(message);
         println 'Mail sent.'
-   // } 
-    //catch (MessagingException e) 
-    //{
-       //e.printStackTrace();
-       // return false;
-    //}
-    //return true;
+   
 }
    
         
