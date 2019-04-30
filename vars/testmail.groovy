@@ -17,6 +17,8 @@ def instance = Jenkins.getInstance()
 def mailServer = instance.getDescriptor("hudson.tasks.Mailer")
 def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
 //def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
+    Thread.start {
+    sleep 10000
         //Jenkins Location
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
@@ -27,7 +29,7 @@ def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
         mailServer.setCharset("UTF-8")
         // Save the state
         instance.save() 
- 
+    }
     Properties props = new Properties();
     //props.put("mail.smtp.auth", "true");
     props.put("mail.smtp.host", SMTPHost);
