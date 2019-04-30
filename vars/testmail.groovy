@@ -5,7 +5,7 @@ import jenkins.model.*;
 import hudson.tools.*;
 import hudson.util.Secret; 
 
-def call(sender, receivers, subject, text) 
+def call(receivers, subject, text) 
 {
     // Variables
 def SystemAdminMailAddress = 'admin@merge.com'
@@ -34,17 +34,17 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         instance.save() 
  
     Properties props = new Properties();
-    props.put("mail.smtp.auth", "true");
+    //props.put("mail.smtp.auth", "true");
     props.put("mail.smtp.host", SMTPHost);
-    props.put("mail.smtp.user", SMTPUser);
+    //props.put("mail.smtp.user", SMTPUser);
     props.put("mail.smtp.port", SMTPPort);
-    props.put("mail.smtp.password", SMTPPassword);
+    //props.put("mail.smtp.password", SMTPPassword);
 
     Session session = Session.getInstance(props, null);
     //try
     //{
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(sender));
+        //message.setFrom(new InternetAddress(sender));
         //InternetAddress addressTo = new InternetAddress[receivers];
        // addressTo[i] = new InternetAddress(addressTo);
         message.setRecipients(Message.RecipientType.TO, receivers);
