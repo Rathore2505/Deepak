@@ -10,7 +10,7 @@ def call(receivers, subject, text)
  def env = System.getenv()
  if (!env['ADOP_SMTP_ENABLED'].toBoolean()) {
  println "--> SMTP configuration is disabled."
- 
+ return
 }
     // Variables
 def SystemAdminMailAddress = env['admin@merge.com']
