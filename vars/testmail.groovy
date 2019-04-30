@@ -7,13 +7,11 @@ import hudson.util.Secret;
 
 def call(receivers, subject, text) 
 {
- def env = System.getenv()
-  println 'Message Test is ' + env + '.'
 
     // Variables
-def SystemAdminMailAddress = env['admin@merge.com']
-def SMTPPort = env['25']
-def SMTPHost = env['mail.products.network.internal']
+def SystemAdminMailAddress = 'admin@merge.com'
+def SMTPPort = '25'
+def SMTPHost = 'mail.products.network.internal'
 
 // Constants
 def instance = Jenkins.getInstance()
@@ -42,7 +40,7 @@ def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
     Session session = Session.getInstance(props, null);
    
         Message message = new MimeMessage(session);
-        //message.setFrom(new InternetAddress(sender));
+        message.setFrom(new InternetAddress(SystemAdminMailAddress));
         //InternetAddress addressTo = new InternetAddress[receivers];
        // addressTo[i] = new InternetAddress(addressTo);
         message.setRecipients(Message.RecipientType.TO, receivers);
