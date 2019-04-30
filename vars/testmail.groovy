@@ -9,8 +9,8 @@ def call(receivers, subject, text)
 {
     // Variables
 def SystemAdminMailAddress = 'admin@merge.com'
-def SMTPPort = '25'
-def SMTPHost = 'mail.products.network.internal'
+def SMTPPort = '465'
+def SMTPHost = 'secure200.inmotionhosting.com'
 
 // Constants
 def instance = Jenkins.getInstance()
