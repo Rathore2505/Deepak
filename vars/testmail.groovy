@@ -7,10 +7,15 @@ import hudson.util.Secret;
 
 def call(receivers, subject, text) 
 {
+ def env = System.getenv()
+ if (!env['ADOP_SMTP_ENABLED'].toBoolean()) {
+ println "--> SMTP configuration is disabled."
+ 
+}
     // Variables
-def SystemAdminMailAddress = 'admin@merge.com'
-def SMTPPort = '25'
-def SMTPHost = 'mail.products.network.internal'
+def SystemAdminMailAddress = env['admin@merge.com']
+def SMTPPort = env['25']
+def SMTPHost = env['mail.products.network.internal']
 
 // Constants
 def instance = Jenkins.getInstance()
