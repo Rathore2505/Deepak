@@ -16,7 +16,7 @@ def SMTPHost = 'mail.products.network.internal'
 def instance = Jenkins.getInstance()
 def mailServer = instance.getDescriptor("hudson.tasks.Mailer")
 def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
-def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
+//def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
         //Jenkins Location
         println "--> Configuring JenkinsLocation"
         jenkinsLocationConfiguration.setAdminAddress(SystemAdminMailAddress)
@@ -46,7 +46,10 @@ def extmailServer = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmai
         message.setText(text);
         println 'Sending mail to ' + receivers + '.'
         Transport.send(message);
-       println 'Message Test is ' + message + '.'
+        println 'Message Test is ' + message + '.'
+        println 'Subject Test is ' + subject + '.'
+        println 'Test is ' + text + '.'
+        println 'Subject Test is ' + session + '.'
         println 'Mail sent.'
    
 }
